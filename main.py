@@ -11,7 +11,7 @@ def matrix_output(list):  # Вывод матрицы
     print(' '.join([str(i) for i in list]))
 
 
-def check_win_by_diagonal():  # Проверка победа по диагоналям
+def check_win_by_diagonal():  # Проверка победы по диагоналям
     check_line = data[2]
     if check_line[2] == player:
         # Проверка левой диагонали
@@ -46,16 +46,17 @@ def turn(player, line=0, row=0):  # Выполнение хода
         return True
 
 
+# Начальные установки
 end_game = False
 player = 'O'
-
 data = [[i + j for i in range(0, 4)] for j in range(0, 4)]
 for line_number in range(0, 4):
     line = data[line_number]
     if line_number > 0:
         for row_number in range(1, 4):
             line[row_number] = '-'
-    matrix_output(data[line_number])
+    matrix_output(data[line_number])  # Вывод первоначальной матрицы
+# Ход игры
 while not end_game:
     if player == 'O':
         player = 'X'
@@ -68,6 +69,6 @@ while not end_game:
         end_game = True
         print("Победили", player)
 
-    for line_number in range(0, 4):
+    for line_number in range(0, 4):  # Вывод матрицы с учётом ходов
         line = data[line_number]
         matrix_output(data[line_number])
